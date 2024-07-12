@@ -1,0 +1,531 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+     font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #1e3fde; /* blue */
+}
+
+h2{
+color: #ffffff;
+}
+
+button {
+    cursor: pointer !important;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 13rem 0 5rem 0;
+}
+
+.appWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 1200px;
+}
+
+.appHeading {
+    position: absolute;
+    left: 0;
+    top: -25px;
+    font-size: 3.5rem;
+    letter-spacing: -1px;
+    font-weight: bold;
+    color: #ffffff;
+    filter: drop-shadow(0px 6px 0px rgba(0, 0, 0, 1));
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 95%;
+    z-index: 10;
+}
+
+.appHeading::after {
+    content: 'WENMEMATOR';
+    position: absolute;
+    -webkit-text-stroke: 6px black;
+    z-index: -1;
+}
+
+/* start */
+.appWrapper .canvas {
+    min-width: 500px;
+    min-height: 500px;
+    border: 4px solid black;
+    position: relative;
+    transform: translate(3px, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose {
+    position: absolute;
+    z-index: 1;
+    color: #000000;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 110%;
+    padding: 2rem;
+}
+
+.appWrapper .settings {
+    padding: 5rem 5rem 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #14378a; /* blue */
+    width: 700px;
+    min-height: 500px;
+    position: relative;
+    border: 3px solid black;
+}
+
+@media only screen and (max-width: 1200px) {
+    .appWrapper .settings {
+        width: 600px;
+    }
+    .appWrapper {
+        width: 1100px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .appWrapper .settings {
+        width: 600px;
+    }
+    .appWrapper {
+        width: 1100px;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+    .appWrapper .canvas {
+        transform: translate(0px, 0);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .appWrapper {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+    }
+    .appWrapper .settings {
+        min-height: unset;
+        width: 95%;
+        padding: 6rem 7% 4rem 7%;
+    }
+    .appWrapper .canvas {
+        min-width: unset;
+        min-height: unset;
+        width: 95%;
+    }
+    .appHeading {
+        top: -40px;
+    }
+}
+
+/* headings */
+div.heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+div.heading .options {
+    display: flex;
+}
+
+div.heading .option {
+    position: relative;
+    user-select: none;
+
+}
+
+div.heading p {
+    color: #ffffff;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+div.heading p::after {
+    content: attr(data-text);
+    position: absolute;
+    -webkit-text-stroke: 3px black;
+    z-index: -1;
+    filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 1));
+}
+
+div.heading .options .option.active {
+    outline: 2px solid black;
+}
+
+div.heading .options .option.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: #14378a; /* blue */
+    bottom: -5px;
+    z-index: 1;
+}
+
+div.heading button {
+    padding: 0.2rem 0.7rem;
+    color: #000000;
+    background-color: #ffffff; /* blue */
+    border: 2px solid black;
+    filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 1));
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border-radius:50px;
+    cursor: pointer !important;
+}
+
+/* sections css */
+.section {
+    display: flex;
+}
+
+.section.upload {
+    justify-content: space-between;
+}
+
+.section.upload button {
+    width: 49%;
+    padding: 10px 0;
+    border: 2px solid black;
+    font-size: 0.8rem;
+    background-color: #ffffff;
+    color: black;
+    border-radius:50px;
+    cursor: ponter;
+}
+
+.section.content {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.section.content .templates {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    gap: 0.5rem;
+}
+
+.section.content .templates::-webkit-scrollbar {
+    display: none;
+}
+
+.section.content .templates .template {
+    background-color: #1e3fde; /* blue */
+    min-height: 80px;
+    min-width: 80px;
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+}
+
+.section.content .templates .template img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.section.texts {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.section.texts .text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.section.texts .text input[type='text'] {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    background-color: #1e3fde; 
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    border-radius: 0;
+    color: #ffffff;
+}
+
+.text input[type='text']:focus {
+    outline: none !important;
+}
+
+.text input[type='text']::placeholder {
+    color: #1a1d7d;  
+}
+
+.section.texts .text .textSettings {
+    background-color: #14378a; /* blue */
+    border: 2px solid black;
+    border-left: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    cursor: pointer !important;
+}
+
+div.color {
+    width: 30px;
+    aspect-ratio: 1/1;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 2px solid #1a1d7d; /* blue */
+    outline: 2px solid #000;
+    background-color: #ffffff;
+}
+
+div.delete {
+    width: 30px;
+    aspect-ratio: 1/1;
+    background-color: #ffffff; 
+    border-radius: 100%;
+    overflow: hidden;
+    outline: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.delete i {
+    user-select: none;
+    pointer-events: none;
+}
+
+.textSettings input[type='color'] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer !important;
+}
+
+button.fileUpload {
+    position: relative;
+    cursor:pointer !important;
+}
+
+button.fileUpload input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* view all */
+.viewAll {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    padding: 4rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+.viewAll h1 {
+    color: white;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewAll .exit {
+    position: absolute;
+    right: 10%;
+    width: 50px;
+    height: 50px;
+    background-color: #1e3fde; /* blue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 2px solid white;
+    border-radius: 100%;
+    cursor: pointer !important;
+}
+
+.exit:hover {
+    opacity: 0.8;
+}
+
+.temps {
+    padding: 0 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 700px) {
+    .temps {
+        padding: 0 5%;
+    }
+    .viewAll .exit {
+        right: 1%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.7rem;
+    }
+}
+
+.temps::-webkit-scrollbar {
+    display: none;
+}
+
+.temps .temp {
+    background-color: #1e3fde; /* blue */
+    height: 80px;
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    margin: 5px;
+    cursor: pointer !important;
+}
+
+.temps .temp:hover {
+    opacity: 0.8;
+}
+
+.temps .temp img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+button:hover,
+.template:hover {
+    opacity: 0.8;
+    cursor: pointer !important;
+}
+
+.preview {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: none;
+}
+
+.preview .popup {
+    width: 400px;
+    background-color: #14378a; /* blue */
+    border: 2px solid black;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 1));
+    animation: popin 0.2s ease-in-out;
+}
+
+@keyframes popin {
+    0% {
+        scale: 0;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+.preview .popup img {
+    width: 100%;
+    border: 2px solid black;
+    filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 1));
+}
+
+.popup .btns {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    cursor: pointer !important;
+}
+
+.popup .btns button {
+    height: 50px;
+    width: 100%;
+    font-size: 1.1rem;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 1));
+    border-radius: 50px;
+    cursor: pointer !important;
+}
+
+.popup .btns button:nth-child(1) {
+    background-color: #1e3fde; /* blue */
+    color: #ffffff;
+}
+
+.popup .btns button:nth-child(2) {
+    background-color: #ffffff;
+    color: #000;
+}
+
+@media only screen and (max-width: 450px) {
+    .preview .popup {
+        width: 90%;
+    }
+}
