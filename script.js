@@ -133,10 +133,10 @@ function newMenu(num) {
         returnHTML(11, 'templates')
     }
     if (num === 'HEADS') {
-        returnHTML(8, 'heads')
+        returnHTML(16, 'heads')
     }
     if (num === 'STICKERS') {
-        returnHTML(20, 'stickers')
+        returnHTML(28, 'stickers')
     }
 
 }
@@ -205,8 +205,8 @@ function returnHTML(n, location, html) {
 }
 
 returnHTML(21, 'templates', 'templatess')
-returnHTML(8, 'heads', 'heads')
-returnHTML(14, 'stickers', 'stickers')
+returnHTML(16, 'heads', 'heads')
+returnHTML(28, 'stickers', 'stickers')
 returnHTML(10, 'items', 'items')
 
 
